@@ -1,37 +1,37 @@
 package uniopet.edu.br.filmes;
 
 class Results {
-    private String tituloFilme;
-    private Integer IDFilme;
-    private String diretorFilme;
+    private String title;
+    private Integer episode_id;
+    private String director;
 
-    public Results(String tituloFilme, Integer IDFilme, String diretorFilme) {
-        this.tituloFilme = tituloFilme;
-        this.IDFilme = IDFilme;
-        this.diretorFilme = diretorFilme;
+    public Results(String title, Integer episode_id, String director) {
+        this.title = title;
+        this.episode_id = episode_id;
+        this.director = director;
     }
 
-    public String getTituloFilme() {
-        return tituloFilme;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTituloFilme(String tituloFilme) {
-        this.tituloFilme = tituloFilme;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Integer getIDFilme() {
-        return IDFilme;
+    public Integer getEpisode_id() {
+        return episode_id;
     }
 
-    public void setIDFilme(Integer IDFilme) {
-        this.IDFilme = IDFilme;
+    public void setEpisode_id(Integer episode_id) {
+        this.episode_id = episode_id;
     }
 
-    public String getDiretorFilme() {
-        return diretorFilme;
+    public String getDirector() {
+        return director;
     }
 
-    public void setDiretorFilme(String diretorFilme) {
-        this.diretorFilme = diretorFilme;
+    public void setDirector(String director) {
+        this.director = director;
     }
 }

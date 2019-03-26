@@ -3,6 +3,7 @@ package uniopet.edu.br.filmes;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,7 +50,7 @@ public class Telalogado extends Activity {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://swapi.co/api/films/";
 
-        nomeUsuariologado.setText("Bem vindo, "+mAuth.getCurrentUser().getEmail());
+        nomeUsuariologado.setText("Bem vindo, "+currentUser.getEmail());
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -57,17 +58,25 @@ public class Telalogado extends Activity {
                     public void onResponse(String response) {
                         Filme filme = gson.fromJson(response,Filme.class);
 
-                        for (Results items : filme.getResults()) {
-                            titulofilme.setText(items.getTituloFilme());
-                            idepisodio.setText(items.getIDFilme());
-                            diretorfilme.setText(items.getDiretorFilme());
-                        }
+                        String titulo = filme.results.get(0).getTitle();
+                        Integer id = filme.results.get(0).getEpisode_id();
+                        String diretor = filme.results.get(0).getDirector();
+
+                        titulofilme.setText("Título: "+titulo);
+                        idepisodio.setText("ID: "+String.valueOf(id));
+                        diretorfilme.setText("Diretor: "+diretor);
+
+                        /*titulofilme.setText("Titulo");
+                        idepisodio.setText("01");
+                        diretorfilme.setText("Diretor");*/
+
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Toast.makeText(Telalogado.this, "DEU RUIM MANE", Toast.LENGTH_SHORT).show();
+                        Log.e("Tela logado debug", error.toString());
                     }
                 });
 
